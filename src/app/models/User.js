@@ -1,3 +1,4 @@
+require('dotenv').config()
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
@@ -39,8 +40,8 @@ UserSchema.methods = {
 
 UserSchema.statics = {
 	generateToken({ id }) {
-		return jwt.sign({ id }, 'noeiGTIN0', {
-			expiresIn: 86400
+		return jwt.sign({ id }, process.env.SECRET, {
+			expiresIn: process.env.EXPIRES_IN
 		})
 	}
 }
