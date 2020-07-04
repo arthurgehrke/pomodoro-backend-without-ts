@@ -1,6 +1,6 @@
 const User = require('../models/User')
 
-class UserController {
+class SignUpController {
 	async store(req, res) {
 		const { email } = req.body
 
@@ -14,4 +14,4 @@ class UserController {
 	}
 }
 
-module.exports = new UserController()
+module.exports = new SignUpController()

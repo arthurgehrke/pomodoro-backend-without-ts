@@ -4,6 +4,7 @@ const routes = express.Router()
 
 const controllers = require('./app/controllers')
 
-routes.post('/signup', controllers.UserController.store)
+routes.post('/signup', controllers.SignUpController.store)
+routes.post('/signin', controllers.SignInController.store)
 
 module.exports = routes
