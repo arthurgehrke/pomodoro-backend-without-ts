@@ -39,8 +39,8 @@ UserSchema.methods = {
 }
 
 UserSchema.statics = {
-	generateToken({ id }) {
-		return jwt.sign({ id }, process.env.SECRET, {
+	generateToken({ email }) {
+		return jwt.sign({ email }, process.env.SECRET, {
 			expiresIn: process.env.EXPIRES_IN
 		})
 	}

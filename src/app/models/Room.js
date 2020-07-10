@@ -3,13 +3,15 @@ const moongose = require('mongoose')
 const RoomSchema = new moongose.Schema({
   room_id: {
     type: Number,
-    required: true,
     auto: true
   },
   owner_id: {
     type: moongose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
+  },
+  room_password: {
+    type: String
   },
   members: {
     type: Array,
