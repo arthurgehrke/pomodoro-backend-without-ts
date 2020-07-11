@@ -1,12 +1,13 @@
-const moongose = require('mongoose')
+const mongoose = require('mongoose')
+const AutoIncrement = require('mongoose-sequence')(mongoose)
 
-const RoomSchema = new moongose.Schema({
+const RoomSchema = new mongoose.Schema({
   room_id: {
     type: Number,
-    auto: true
+    default: 0
   },
   owner_id: {
-    type: moongose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
   },
@@ -23,4 +24,6 @@ const RoomSchema = new moongose.Schema({
 	}
 })
 
-module.exports = moongose.model('Room', RoomSchema)
+RoomSchema.plugin(AutoIncrement, {inc_field: 'room_id'})
+
+module.exports = mongoose.model('Room', RoomSchema)

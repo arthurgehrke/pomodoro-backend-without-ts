@@ -5,11 +5,10 @@ class RoomController{
   async store(req,res){
     const user = await getUserByToken(req)
     const { room_password } = req.body
-    console.log(user)
 
     const room = await Room.create({ owner_id: user.id, room_password})
     
-    return room
+    return res.status(201).send(room)
   }
 }
 
